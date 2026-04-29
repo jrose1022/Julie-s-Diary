@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julie's Diary</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=filter_vintage" />
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="font-body overflow-x-hidden bg-gray-500">
+
+<nav class="bg-white backdrop-blur-md text-gray-00 p-4 flex items-center justify-between shadow-md">
+
+  <div class="flex items-center space-x-2">
+    <span class="material-symbols-outlined">
+    filter_vintage
+    </span>
+    <h1>Julie's Diary</h1>
+  </div>
+
+  <div class="flex space-x-6 font-body text-sm md:text-base">
+    <a href="/index.html" class="hover:text-pink-900 transition">Home</a>
+    <a href="/BibleVerse.html" class="hover:text-pink-900 transition">Bible Verse</a>
+    <a href="/LoginSystem.html" class="hover:text-pink-900 transition">Diary</a>
+    <a href="/Inventory.html" class="hover:text-pink-900 transition">Inventory</a>
+  </div>
+
+</nav>
+
+
+<section class="bg-white py-16 px-8 mb-0">
+
+  <div class="max-w-3xl mx-auto flex flex-col items-center justify-center text-center mb-0">
+        <h1 class="text-4xl font-heading font-bold text-700 mb-4">
+        Sidequest to do this YEAR!
+        </h1>
+
+        <p class="text-gray-600 text-sm md:text-base mb-6">
+        Rediscovering my life by unfolding a chapter this year.
+        </p>
+
+        <video class="w-full  h-[320px] object-cover rounded-3xl shadow-lg" autoplay muted loop playsinline mb-0>
+        <source src="img/hike.mp4">
+        </video>
+  </div>
+</section>
+
+<div class="relative">
+  <svg viewBox="0 0 1440 180" class="w-full h-[100px]" preserveAspectRatio="none">
+    <path fill="#ffff"
+      d="M0,64L40,85.3C80,107,160,149,240,149.3C320,149,400,107,480,101.3C560,96,640,128,720,128C800,128,880,96,960,85.3C1040,75,1120,85,1200,96C1280,107,1360,117,1400,122.7L1440,128L1440,0L0,0Z">
+    </path>
+  </svg>
+</div>
+
+<section class="py-16 px-6">
+
+   
+    <div class="flex flex-col md:flex-row gap-3 justify-center items-center mb-6">
+      
+      <input 
+        id="activityInput"
+        type="text"
+        placeholder="Enter new activity..."
+        class="border px-4 py-2 rounded-lg w-64"
+      >
+
+      <button onclick="addItem()" class="bg-black text-white px-4 py-2 rounded-lg">
+        Add
+      </button>
+
+      <button onclick="changeFont()" class="bg-black text-white px-4 py-2 rounded-lg">
+        Change Font
+      </button>
+
+      <button onclick="toggleBold()" class="bg-black text-white px-4 py-2 rounded-lg">
+        Bold
+      </button>
+
+    </div>
+    
+  </div>
+
+  <div id="activityList" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto">
+
+    <div class="card relative group bg-white p-6 rounded-2xl shadow-md overflow-hidden text-center">
+      <div class="transition duration-300 group-hover:opacity-0">
+        <h3 class="title text-lg font-semibold">Hiking</h3>
+      </div>
+      <div class="absolute inset-0 flex items-center justify-center px-4 opacity-0 group-hover:opacity-100 transition duration-300">
+        <p class="text-gray-600 text-sm">
+          Take my life to a new leap and let go all the pain life.
+        </p>
+      </div>
+    </div>
+
+    <div class="card relative group bg-white p-6 rounded-2xl shadow-md overflow-hidden text-center">
+      <div class="transition duration-300 group-hover:opacity-0">
+        <h3 class="title text-lg font-semibold">Freediving</h3>
+      </div>
+      <div class="absolute inset-0 flex items-center justify-center px-4 opacity-0 group-hover:opacity-100 transition duration-300">
+        <p class="text-gray-600 text-sm">
+          Just want to try new thing in life.
+        </p>
+      </div>
+    </div>
+
+    <div class="card relative group bg-white p-6 rounded-2xl shadow-md overflow-hidden text-center">
+      <div class="transition duration-300 group-hover:opacity-0">
+        <h3 class="title text-lg font-semibold">Rapelling</h3>
+      </div>
+      <div class="absolute inset-0 flex items-center justify-center px-4 opacity-0 group-hover:opacity-100 transition duration-300">
+        <p class="text-gray-600 text-sm">
+          Experience a thrill in life.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  function addItem() {
+    const input = document.getElementById("activityInput");
+    const value = input.value.trim();
+
+    if (value === "") return;
+
+    const container = document.getElementById("activityList");
+
+    const card = document.createElement("div");
+    card.className = "card relative group bg-white p-6 rounded-2xl shadow-md overflow-hidden text-center";
+
+    card.innerHTML = `
+      <div class="transition duration-300 group-hover:opacity-0">
+        <h3 class="title text-lg font-semibold">${value}</h3>
+      </div>
+      <div class="absolute inset-0 flex items-center justify-center px-4 opacity-0 group-hover:opacity-100 transition duration-300">
+        <p class="text-gray-600 text-sm">
+          This is something I want to try this year.
+        </p>
+      </div>
+    `;
+
+    container.appendChild(card);
+    input.value = "";
+  }
+
+  function changeFont() {
+    const titles = document.querySelectorAll(".title");
+
+    titles.forEach(item => {
+      item.style.fontFamily = "cursive";
+    });
+  }
+
+  function toggleBold() {
+  const titles = document.querySelectorAll(".title");
+
+  titles.forEach(item => {
+    item.classList.remove("font-semibold");
+
+    if (item.classList.contains("font-bold")) {
+      item.classList.remove("font-bold");
+      item.classList.add("font-normal");
+    } else {
+      item.classList.remove("font-normal");
+      item.classList.add("font-bold");
+    }
+  });
+}
+</script>
+
+<div class="relative -mb-2 rotate-180">
+  <svg viewBox="0 0 1440 120" class="w-full h-[100px]" preserveAspectRatio="none">
+    <path fill="#fff"
+      d="M0,64L60,85.3C120,107,240,149,360,138.7C480,128,600,64,720,53.3C840,43,960,85,1080,106.7C1200,128,1320,128,1380,128L1440,128L1440,0L0,0Z">
+    </path>
+  </svg>
+</div>
+
+
+<footer class="bg-white text-center py-12 px-6">
+
+  <h3 class="text-2xl md:text-3xl font-bold">
+    Julie's Diary
+  </h3>
+
+  <p class="text-gray-600 mt-2 text-sm md:text-base">
+    A young woman, trying to find herself in the chaos of the world.
+  </p>
+
+  <div class="mt-6 space-y-2 text-gray-700 text-sm">
+    <p class="flex justify-center items-center space-x-2">
+      <i class="fa-solid fa-phone"></i>
+      <span>0912-345-6789</span>
+    </p>
+
+    <p class="flex justify-center items-center space-x-2">
+      <i class="fa-solid fa-envelope"></i>
+      <span>j.diary@adventure.com</span>
+    </p>
+
+    <p class="flex justify-center items-center space-x-2">
+      <i class="fa-solid fa-location-dot "></i>
+      <span>Imus, Cavite</span>
+    </p>
+  </div>
+
+  <div class="flex justify-center space-x-5 mt-6 text-xl">
+    <a href="#" class="hover:text-pink-700 hover:scale-110 transition">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+
+    <a href="#" class=" hover:text-pink-700 hover:scale-110 transition">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <a href="#" class=" hover:text-pink-700 hover:scale-110 transition">
+      <i class="fa-brands fa-tiktok"></i>
+    </a>
+  </div>
+
+  <p class="text-gray-400 text-xs mt-8">
+    All rights reserved.
+  </p>
+
+</footer>
+
+</body>
+</html>

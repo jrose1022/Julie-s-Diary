@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Diary Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen font-[Poppins] relative">
+
+
+<div class="fixed inset-0 bg-cover bg-center -z-10" style="background-image: url('img/bg.svg');"></div>
+
+
+<nav class="p-4 flex items-center justify-between shadow-md relative z-10">
+    <div class="flex items-center space-x-2">
+        <span class="material-symbols-outlined">
+            filter_vintage
+        </span>
+        <h1>Julie's Diary</h1>
+    </div>
+
+  <div class="flex space-x-6 text-sm">
+    <a href="/index.html" class="hover:text-pink-900">Home</a>
+    <a href="/BibleVerse.html" class="hover:text-pink-900">Bible Verse</a>
+    <a href="/LoginSystem.html" class="hover:text-pink-900">Diary</a>
+    <a href="/Inventory.html" class="hover:text-pink-900">Inventory</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="text-center mt-10 relative z-10">
+  <h1 class="text-4xl font-bold mb-4">Julie's Diary</h1>
+  <p class="text-gray-700">To read her adventure, you must login!</p>
+</section>
+
+<!-- LOGIN -->
+<div class="flex justify-center mt-10 px-4 relative z-10">
+
+  <div class="bg-[#b8a898] rounded-3xl p-10 w-full max-w-3xl shadow-xl">
+
+    <form id="loginForm" class="bg-[#e7ded4] rounded-2xl p-8">
+
+      <!-- USERNAME -->
+      <div class="flex items-center bg-[#cfc3b6] rounded-lg px-4 py-3 mb-4">
+        <span class="material-symbols-outlined mr-3 text-white">person</span>
+        <input id="username" type="text" placeholder="Username"
+          class="bg-transparent outline-none w-full text-base placeholder-white" required>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="flex items-center bg-[#cfc3b6] rounded-lg px-4 py-3 mb-3">
+        <span class="material-symbols-outlined mr-3 text-white">lock</span>
+        <input id="password" type="password" placeholder="Password"
+          class="bg-transparent outline-none w-full text-base placeholder-white" required>
+      </div>
+
+      <!-- ERROR -->
+      <p id="errorMsg" class="text-red-500 text-sm mb-4 hidden"></p>
+
+      <!-- BUTTONS -->
+      <div class="flex justify-between">
+        <button type="button" onclick="openSignupModal()"
+          class="bg-[#b8a898] text-white px-6 py-2 rounded-lg hover:opacity-90">
+          Sign up
+        </button>
+
+        <button type="submit"
+          class="bg-[#b8a898] text-white px-6 py-2 rounded-lg hover:opacity-90">
+          Login
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- SIGNUP MODAL -->
+<div id="signupModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+
+  <div class="bg-white rounded-2xl p-6 w-[300px] text-center shadow-lg">
+    <p class="mb-4 text-gray-700">No sign up feature yet 😅</p>
+
+    <button onclick="closeSignupModal()"
+      class="bg-[#b8a898] text-white px-4 py-2 rounded-lg">
+      OK
+    </button>
+  </div>
+
+</div>
+
+<!-- LOGIN SUCCESS MODAL -->
+<div id="LoginSuccessful" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+
+  <div class="bg-white rounded-2xl p-6 w-[300px] text-center shadow-lg">
+    <p class="mb-4 text-gray-700">Login Successful!!</p>
+
+    <button onclick="closeSignupModal()"
+      class="bg-[#b8a898] text-white px-4 py-2 rounded-lg">
+      OK
+    </button>
+  </div>
+
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const password = document.getElementById("password").value;
+  const errorMsg = document.getElementById("errorMsg");
+
+  errorMsg.classList.add("hidden");
+
+  if (password.length < 8) {
+    return showError("Password must be at least 8 characters.");
+  }
+
+  if (/^\d+$/.test(password)) {
+    return showError("Password cannot be only numbers.");
+  }
+
+  if (!( /[a-z]/.test(password) && /[A-Z]/.test(password) )) {
+    return showError("Password must include uppercase and lowercase.");
+  }
+
+  const modal = document.getElementById("LoginSuccessful");
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+});
+
+function showError(msg) {
+  const err = document.getElementById("errorMsg");
+  err.textContent = msg;
+  err.classList.remove("hidden");
+}
+
+function openSignupModal() {
+  const modal = document.getElementById("signupModal");
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+}
+
+function closeSignupModal() {
+  const modal = document.getElementById("signupModal");
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+
+  const success = document.getElementById("LoginSuccessful");
+  success.classList.add("hidden");
+  success.classList.remove("flex");
+}
+</script>
+
+</body>
+</html>

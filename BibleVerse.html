@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julie's Faith Journal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-body overflow-x-hidden bg-gray-500">
+
+
+<nav class="bg-white backdrop-blur-md text-gray-00 p-4 flex items-center justify-between shadow-md">
+  <div class="flex items-center space-x-2">
+    <span class="material-symbols-outlined">filter_vintage</span>
+    <h1>Julie's Diary</h1>
+  </div>
+
+  <div class="flex space-x-6 text-sm md:text-base">
+    <a href="/index.html" class="hover:text-pink-900">Home</a>
+    <a href="/BibleVerse.html" class="hover:text-pink-900">Bible Verse</a>
+    <a href="/LoginSystem.html" class="hover:text-pink-900">Diary</a>
+    <a href="/Inventory.html" class="hover:text-pink-900">Inventory</a>
+  </div>
+</nav>
+
+
+<section class="bg-white py-10 text-center">
+  <h1 class="text-3xl font-bold">Bible Verse & Prayer Journal</h1>
+  <p class="text-gray-600">Grow your faith daily</p>
+</section>
+
+<div class="relative">
+  <svg viewBox="0 0 1440 180" class="w-full h-[50px]" preserveAspectRatio="none">
+    <path fill="#ffff"
+      d="M0,64L40,85.3C80,107,160,149,240,149.3C320,149,400,107,480,101.3C560,96,640,128,720,128C800,128,880,96,960,85.3C1040,75,1120,85,1200,96C1280,107,1360,117,1400,122.7L1440,128L1440,0L0,0Z">
+    </path>
+  </svg>
+</div>
+
+<div class="flex justify-center my-6">
+  <button onclick="toggleCardDesign()" class="px-4 py-2 bg-black text-white rounded-lg">
+    Toggle Card Design
+  </button>
+</div>
+
+
+<section class="max-w-5xl mx-auto grid gap-6 sm:grid-cols-2 md:grid-cols-3 px-6">
+
+  <div class="verse-card bg-white p-5 rounded-2xl shadow-lg text-center transition-all">
+    <h3 class="font-semibold text-lg">Jeremiah 29:11</h3>
+    <p class="text-gray-600 text-sm mt-2">
+      "For I know the plans I have for you," declares the Lord.
+    </p>
+  </div>
+
+  <div class="verse-card bg-white p-5 rounded-2xl shadow-lg text-center transition-all">
+    <h3 class="font-semibold text-lg">Philippians 4:13</h3>
+    <p class="text-gray-600 text-sm mt-2">
+      I can do all things through Christ who strengthens me.
+    </p>
+  </div>
+
+  <div class="verse-card bg-white p-5 rounded-2xl shadow-lg text-center transition-all">
+    <h3 class="font-semibold text-lg">Prayer</h3>
+    <p class="text-gray-600 text-sm mt-2">
+      Lord, guide me today and strengthen my faith.
+    </p>
+  </div>
+
+  <br>
+</section>
+
+
+<div class="relative -mb-2 rotate-180">
+  <svg viewBox="0 0 1440 120" class="w-full h-[100px]" preserveAspectRatio="none">
+    <path fill="#fff"
+      d="M0,64L60,85.3C120,107,240,149,360,138.7C480,128,600,64,720,53.3C840,43,960,85,1080,106.7C1200,128,1320,128,1380,128L1440,128L1440,0L0,0Z">
+    </path>
+  </svg>
+</div>
+
+
+<footer class="bg-white text-center py-12 px-6 ">
+  <h3 class="text-2xl font-bold">Julie's Diary</h3>
+  <p class="text-gray-600 mt-2 text-sm">
+    A young woman, trying to find herself in the chaos of the world.
+  </p>
+
+  <div class="mt-6 space-y-2 text-gray-700 text-sm">
+    <p><i class="fa-solid fa-phone"></i> 0912-345-6789</p>
+    <p><i class="fa-solid fa-envelope"></i> j.diary@adventure.com</p>
+    <p><i class="fa-solid fa-location-dot"></i> Imus, Cavite</p>
+  </div>
+
+  <div class="flex justify-center space-x-5 mt-6 text-xl">
+    <i class="fa-brands fa-facebook hover:text-pink-700"></i>
+    <i class="fa-brands fa-instagram hover:text-pink-700"></i>
+    <i class="fa-brands fa-tiktok hover:text-pink-700"></i>
+  </div>
+
+  <p class="text-gray-400 text-xs mt-8">All rights reserved.</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+let styled = true;
+
+function toggleCardDesign() {
+  const cards = document.querySelectorAll(".verse-card");
+
+  styled = !styled;
+
+  cards.forEach(card => {
+    if (!styled) {
+      // Plain style
+      card.classList.remove("bg-white","p-5","rounded-2xl","shadow-lg","text-center");
+      card.classList.add("bg-transparent","p-2","border-b","text-left", "text-white");
+    } else {
+      // Styled
+      card.classList.remove("bg-transparent","p-2","border-b","text-left");
+      card.classList.add("bg-white","p-5","rounded-2xl","shadow-lg","text-center");
+    }
+  });
+}
+</script>
+
+</body>
+</html>

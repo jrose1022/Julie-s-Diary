@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julie's Inventory Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900">
+  <nav class="sticky top-0 z-20 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="mx-auto max-w-6xl px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+    
+        <div>
+            
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">
+            <span class="material-symbols-outlined text-sm">filter_vintage</span>
+            Julie’s Diary
+        </p>
+          <h1 class="text-xl font-semibold text-slate-900">Inventory Management</h1>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-4 text-sm text-slate-700">
+        <a href="/index.html" class="hover:text-slate-900 transition">Home</a>
+        <a href="/BibleVerse.html" class="hover:text-slate-900 transition">Bible Verse</a>
+        <a href="/LoginSystem.html" class="hover:text-slate-900 transition">Diary</a>
+        <a href="/Inventory.html" class="text-slate-900 font-semibold">Inventory</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="mx-auto max-w-6xl px-6 py-10">
+    <section class="rounded-[2rem] bg-white shadow-[0_20px_60px_-30px_rgba(15,23,42,0.2)] border border-slate-200 p-8 mb-10">
+      <div class="grid gap-8 lg:grid-cols-[1.4fr_0.9fr] lg:items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Inventory system</p>
+          <h2 class="mt-3 text-3xl font-semibold text-slate-900">Julie's Inventory </h2>
+          <p class="mt-4 max-w-2xl text-slate-600 leading-7">
+            View summaries, track updates, and monitor system status in real time. Designed for clarity, speed, and easy navigation.
+          </p>
+        </div>
+        <div class="rounded-[1.75rem] bg-slate-50 border border-slate-200 p-6 shadow-sm">
+          <div class="flex items-center gap-3 text-slate-900">
+            <span class="rounded-2xl bg-slate-200 p-3 text-lg"><i class="fa-solid fa-boxes-stacked"></i></span>
+            <div>
+              <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Current inventory</p>
+              <p class="mt-2 text-2xl font-semibold">8 items</p>
+            </div>
+          </div>
+          <div class="mt-6 grid grid-cols-2 gap-4 text-sm text-slate-600">
+            <div class="rounded-3xl bg-white border border-slate-200 p-4 shadow-sm">
+              <p class="font-semibold text-slate-700">In stock</p>
+              <p class="mt-2 text-xl font-semibold text-slate-900">7</p>
+            </div>
+            <div class="rounded-3xl bg-white border border-slate-200 p-4 shadow-sm">
+              <p class="font-semibold text-slate-700">Out of stock</p>
+              <p class="mt-2 text-xl font-semibold text-slate-900">1</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid gap-6 lg:grid-cols-[1.6fr_0.9fr]">
+      <div class="rounded-[2rem] bg-white border border-slate-200 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.2)] p-8">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-6">
+          <div class="grid flex-1 gap-4 sm:grid-cols-[1.3fr_0.7fr]">
+            <div>
+              <label for="itemName" class="block text-sm font-medium text-slate-700 mb-2">Item name</label>
+              <input id="itemName" type="text" placeholder="Enter item name" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200" />
+            </div>
+            <div>
+              <label for="itemQty" class="block text-sm font-medium text-slate-700 mb-2">Quantity</label>
+              <input id="itemQty" type="number" min="0" value="1" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200" />
+            </div>
+          </div>
+          <button id="addItemBtn" class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-slate-800 transition">
+            <i class="fa-solid fa-plus mr-2"></i>Add item
+          </button>
+        </div>
+        <p class="text-sm text-slate-500">Double click a quantity value to edit it directly. Press Enter or click outside the field to save changes.</p>
+
+        <div class="mt-8 overflow-x-auto rounded-[1.8rem] border border-slate-200 bg-slate-50 shadow-sm">
+          <table class="min-w-full divide-y divide-slate-200 text-sm">
+            <thead class="bg-slate-100 text-slate-700 uppercase tracking-[0.12em] text-[0.78rem]">
+              <tr>
+                <th class="px-6 py-4 text-left">Item</th>
+                <th class="px-6 py-4 text-left">Quantity</th>
+                <th class="px-6 py-4 text-left">Status</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryTable" class="divide-y divide-slate-200 bg-white">
+              <tr>
+                <td class="px-6 py-5 text-slate-800">Adventure Journal</td>
+                <td class="px-6 py-5 quantity-cell" data-quantity="3">3</td>
+                <td class="px-6 py-5 text-sm font-medium text-slate-700">In stock</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-5 text-slate-800">Water Bottle</td>
+                <td class="px-6 py-5 quantity-cell" data-quantity="5">5</td>
+                <td class="px-6 py-5 text-sm font-medium text-slate-700">In stock</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-5 text-slate-800">Camping Blanket</td>
+                <td class="px-6 py-5 quantity-cell" data-quantity="2">2</td>
+                <td class="px-6 py-5 text-sm font-medium text-slate-700">In stock</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <aside class="rounded-[2rem] bg-white border border-slate-200 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.2)] p-8">
+        <div class="flex items-center justify-between gap-4 mb-6">
+          <div>
+            <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Quick tips</p>
+            <h3 class="mt-2 text-2xl font-semibold text-slate-900">Inventory controls</h3>
+          </div>
+          <div class="rounded-3xl bg-slate-100 px-4 py-3 text-slate-700 shadow-sm">
+            <i class="fa-solid fa-gear"></i>
+          </div>
+        </div>
+        <ul class="space-y-4 text-slate-600">
+          <li class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm">
+            <p class="font-semibold text-slate-800">Add new items</p>
+            <p class="mt-1 text-sm">Use the form above to add items with quantity values into the inventory table.</p>
+          </li>
+          <li class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm">
+            <p class="font-semibold text-slate-800">Edit quantity</p>
+            <p class="mt-1 text-sm">Double click the quantity cell to reveal an inline input field and type the new number.</p>
+          </li>
+          <li class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm">
+            <p class="font-semibold text-slate-800">Keep stock status</p>
+            <p class="mt-1 text-sm">Rows update automatically to show if an item is in stock or out of stock.</p>
+          </li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="bg-slate-100 border-t border-slate-200 text-center py-10">
+    <div class="mx-auto max-w-6xl px-6">
+      <p class="text-sm uppercase tracking-[0.24em] text-slate-500">Julie's Diary</p>
+      <h4 class="mt-3 text-2xl font-semibold text-slate-900">Balanced inventory with calm gray styling.</h4>
+      <p class="mt-4 text-slate-600 max-w-2xl mx-auto">A polished gray-and-white inventory page that keeps the interface clean, accessible, and easy to use.</p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-slate-500 text-sm">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-phone"></i>0912-345-6789</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-envelope"></i>j.diary@adventure.com</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot"></i>Imus, Cavite</span>
+      </div>
+      <div class="mt-8 flex justify-center gap-5 text-xl text-slate-400">
+        <a href="#" class="hover:text-slate-700 transition"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="hover:text-slate-700 transition"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="hover:text-slate-700 transition"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  const tableBody = document.getElementById('inventoryTable');
+  const addItemBtn = document.getElementById('addItemBtn');
+  const itemNameInput = document.getElementById('itemName');
+  const itemQtyInput = document.getElementById('itemQty');
+
+  // ✅ UPDATE INVENTORY SUMMARY
+  function updateInventorySummary() {
+    const rows = tableBody.querySelectorAll('tr');
+
+    let totalItems = 0;
+    let inStock = 0;
+    let outOfStock = 0;
+
+    rows.forEach(row => {
+      const qtyCell = row.querySelector('.quantity-cell');
+      const qty = Number(qtyCell.dataset.quantity || qtyCell.textContent);
+
+      totalItems++;
+
+      if (qty > 0) {
+        inStock++;
+      } else {
+        outOfStock++;
+      }
+    });
+
+    // update UI
+    document.querySelector('.text-2xl.font-semibold').textContent = totalItems + ' items';
+
+    const stats = document.querySelectorAll('.grid.grid-cols-2 .text-xl.font-semibold');
+    stats[0].textContent = inStock;
+    stats[1].textContent = outOfStock;
+  }
+
+  function updateStatusCell(row, quantity) {
+    const statusCell = row.querySelector('td:last-child');
+
+    if (quantity > 0) {
+      statusCell.textContent = 'In stock';
+      statusCell.className = 'px-6 py-5 text-sm font-medium text-slate-700';
+    } else {
+      statusCell.textContent = 'Out of stock';
+      statusCell.className = 'px-6 py-5 text-sm font-medium text-rose-600';
+    }
+  }
+
+  function attachQuantityEvents(cell) {
+    cell.addEventListener('dblclick', () => {
+      if (cell.querySelector('input')) return;
+
+      const currentQty = Number(cell.dataset.quantity || cell.textContent.trim());
+
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.min = '0';
+      input.value = currentQty;
+      input.className = 'w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-sm';
+
+      cell.textContent = '';
+      cell.appendChild(input);
+      input.focus();
+
+      const saveValue = () => {
+        const newQty = Number(input.value);
+
+        const safeQty = Number.isNaN(newQty) ? currentQty : newQty;
+
+        const row = cell.closest('tr');
+        cell.dataset.quantity = safeQty;
+        cell.textContent = safeQty;
+
+        updateStatusCell(row, safeQty);
+        updateInventorySummary(); // ✅ IMPORTANT FIX
+      };
+
+      const cancelEdit = () => {
+        const row = cell.closest('tr');
+        cell.textContent = currentQty;
+        cell.dataset.quantity = currentQty;
+
+        updateStatusCell(row, currentQty);
+        updateInventorySummary();
+      };
+
+      input.addEventListener('blur', saveValue);
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') input.blur();
+        if (e.key === 'Escape') cancelEdit();
+      });
+    });
+  }
+
+  function createRow(name, quantity) {
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+      <td class="px-6 py-5 text-slate-800">${name}</td>
+      <td class="px-6 py-5 quantity-cell" data-quantity="${quantity}">${quantity}</td>
+      <td class="px-6 py-5 text-sm font-medium ${quantity > 0 ? 'text-slate-700' : 'text-rose-600'}">
+        ${quantity > 0 ? 'In stock' : 'Out of stock'}
+      </td>
+    `;
+
+    attachQuantityEvents(row.querySelector('.quantity-cell'));
+    return row;
+  }
+
+  function addItem() {
+    const name = itemNameInput.value.trim();
+    const qty = Number(itemQtyInput.value);
+
+    if (!name) return;
+
+    const safeQty = Number.isNaN(qty) || qty < 0 ? 0 : qty;
+
+    tableBody.appendChild(createRow(name, safeQty));
+
+    itemNameInput.value = '';
+    itemQtyInput.value = '1';
+
+    updateInventorySummary(); // ✅ IMPORTANT FIX
+  }
+
+  addItemBtn.addEventListener('click', addItem);
+
+  itemNameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') addItem();
+  });
+
+  itemQtyInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') addItem();
+  });
+
+  // init
+  document.querySelectorAll('.quantity-cell').forEach(attachQuantityEvents);
+  updateInventorySummary(); // ✅ INITIAL LOAD FIX
+</script>
+</body>
+</html>
